@@ -8,6 +8,6 @@ namespace BoVoyageSQL
 {
     public class Class1
     {
-        var Voyage = 5;
+        
     }
 }
