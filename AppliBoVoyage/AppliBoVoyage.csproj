@@ -68,6 +68,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Application.cs" />
+    <Compile Include="UI\ModuleGestionParticipants.cs" />
+    <Compile Include="UI\ModuleGestionClientèle.cs" />
     <Compile Include="UI\SousModuleDestination.cs" />
     <Compile Include="UI\SousModuleAgence.cs" />
     <Compile Include="UI\SousModuleOffre.cs" />
