@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BoVoyage.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\BoVoyage.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,11 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Metier\AgenceVoyage.cs" />
+    <Compile Include="Metier\Assurance.cs" />
+    <Compile Include="Metier\AssuranceAnnulation.cs" />
+    <Compile Include="Metier\Client.cs" />
+    <Compile Include="Metier\Destination.cs" />
+    <Compile Include="Metier\DossierReservation.cs" />
+    <Compile Include="Metier\EtatDossierReservation.cs" />
+    <Compile Include="Metier\Participant.cs" />
+    <Compile Include="Metier\Personne.cs" />
+    <Compile Include="Metier\RaisonAnnulationDossier.cs" />
+    <Compile Include="Metier\Voyage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\BoVoyage.Framework.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
