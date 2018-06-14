@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoVoyage.Framework.UI;
+using BoVoyage.UI;
 
 namespace AppliBoVoyage
 {
@@ -10,7 +12,8 @@ namespace AppliBoVoyage
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("De travailler avec Blandine, je suis déjà fatigué...");
+            var application = new Application();
+            application.Demarrer();
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
+using System.Linq;
+using AppliBoVoyage.Metier;
 
 namespace AppliBoVoyage.UI
 {
@@ -48,14 +50,21 @@ namespace AppliBoVoyage.UI
             private void ConsulterOffre()
             {
                 ConsoleHelper.AfficherEntete("Offres");
-                        
+
+            //var liste = new BaseDonnees().Agences.ToList();
+            //ConsoleHelper.AfficherListe(liste);
             }
-
-
+        
             private void AjouterOffre()
             {
                 ConsoleHelper.AfficherEntete("Nouvelle offre");
-
+            var voyage = new Voyage();
+            {
+                voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller: ");
+                voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour: ");
+                voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire ("Nombre de place(s) disponible(s): ");
+                voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Prix du voyage tout compris ");
+            }
             }
 
         private void ModifierOffre()
