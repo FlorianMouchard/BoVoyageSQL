@@ -14,9 +14,9 @@ namespace AppliBoVoyage.Metier
         public int NumeroUnique { get; set; }
 
         //[InformationAffichage(Entete = "Nom Client", NombreCaracteres = 30)]
-       public int IdClient { get; set; }
-            [ForeignKey("IdClient")]
-       public virtual Client  Clients { get; set; }
+        public int IdClient { get; set; }
+        [ForeignKey("IdClient")]
+        public virtual Client Clients { get; set; }
 
         public int Pays { get; set; }
         [ForeignKey("Pays")]
@@ -31,13 +31,27 @@ namespace AppliBoVoyage.Metier
         [ForeignKey("DateRetour")]
         public virtual Voyage VoyageRetour { get; set; }
 
-        public int NombreVoyageurs { count.Participants ; set; }
-        [ForeignKey("Voyageurs")]
-        public virtual Voyage VoyageRetour { get; set; }
+        //public int NombreVoyageurs { count.Participants; set; }
+        //[ForeignKey("Voyageurs")]
+        //public virtual Participant Participants { get; set; }
 
-        s
         public string NumeroCarteBancaire { get; set; }
 
-        public decimal PrixTotal { get; set; }
+        //public decimal PrixTotal()
+        //{
+        //    switch (PrixTotal)
+        //    {
+        //        int TarifVoyage = Voyage.TarifToutCompris;
+        //    int Reduction = Participant.reduction;
+
+        //        case (Reduction == null):
+        //            decimal PrixTotal = TarifVoyage + 10 %;
+        //    break;
+        //        case (Reduction > 0):
+        //            decimal PrixTotal = TarifVoyage + Reduction + 10 %;
+        //    break;
+
+        //}
     }
 }
+
