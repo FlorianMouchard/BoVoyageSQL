@@ -8,13 +8,13 @@ namespace BoVoyage.UI
     public class Application
     {
         private Menu menuPrincipal;
-        private ModuleGestionClientèle moduleGestionClientèle;
+        private ModuleGestionClientele moduleGestionClientele;
         private ModuleGestionVoyages moduleGestionVoyages;
         private ModuleGestionDossiersResa moduleGestionDossiersResa;
 
         private void InitialiserModules()
         {
-            this.moduleGestionClientèle = new ModuleGestionClientèle();
+            this.moduleGestionClientele = new ModuleGestionClientele();
             this.moduleGestionVoyages = new ModuleGestionVoyages();
             this.moduleGestionDossiersResa = new ModuleGestionDossiersResa();
         }
@@ -25,7 +25,7 @@ namespace BoVoyage.UI
             this.menuPrincipal.AjouterElement(new ElementMenu("1", "Gestion des clients")
             {
                 AfficherLigneRetourMenuApresExecution = false,
-                FonctionAExecuter = this.moduleGestionClientèle.Demarrer
+                FonctionAExecuter = this.moduleGestionClientele.Demarrer
             });
             this.menuPrincipal.AjouterElement(new ElementMenu("2", "Gestion des voyages")
             {

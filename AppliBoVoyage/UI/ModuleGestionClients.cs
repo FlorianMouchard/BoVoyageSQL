@@ -48,23 +48,25 @@ namespace AppliBoVoyage.UI
         }
         private void ConsulterClients()
         {
+            ConsoleHelper.AfficherEntete("Liste des clients");
 
         }
         private void RechercherClient()
         {
+            ConsoleHelper.AfficherEntete("Rechercher un client");
 
         }
         private void AjouterClient()
         {
-
+            ConsoleHelper.AfficherEntete("Ajouter un client");
         }
         private void ModifierClient()
         {
-
+            ConsoleHelper.AfficherEntete("Modifier un client");
         }
         private void SupprimerClient()
         {
-
+            ConsoleHelper.AfficherEntete("Supprimer un client");
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppliBoVoyage.UI
 {
-    class ModuleGestionClientèle
+    class ModuleGestionClientele
     {
         private Menu menu;
         private ModuleGestionClients moduleGestionClients;
