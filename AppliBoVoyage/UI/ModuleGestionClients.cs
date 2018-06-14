@@ -1,4 +1,5 @@
-﻿using AppliBoVoyage.Metier;
+﻿using AppliBoVoyage.Dal;
+using AppliBoVoyage.Metier;
 using BoVoyage.Framework.UI;
 using BoVoyage.UI;
 using System;
@@ -17,7 +18,7 @@ namespace AppliBoVoyage.UI
             = new List<InformationAffichage>();
         static ModuleGestionClients()
         {
-            
+
             strategieAffichageClients = new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
@@ -81,6 +82,23 @@ namespace AppliBoVoyage.UI
         private void AjouterClient()
         {
             ConsoleHelper.AfficherEntete("Ajouter un client");
+            BaseDonnees context = new BaseDonnees();
+            var client = new Client
+            {
+                Civilité = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
+                Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
+                Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
+                Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
+                Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : "),
+                Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
+                DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
+
+            };
+            client.Age = DateTime.Now.Year - client.DateNaissance.Year -
+                         (DateTime.Now.Month < client.DateNaissance.Month ? 1 :
+                         DateTime.Now.Day < client.DateNaissance.Day ? 1 : 0);
+            context.Clients.Add(client);
+            context.SaveChanges();
         }
         private void ModifierClient()
         {

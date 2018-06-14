@@ -9,6 +9,6 @@ namespace AppliBoVoyage.Metier
     public class Participant:Personne
     {
         public int NumeroUnique { get; set; }
-        public float Reduction { get; set; }
+        public decimal Reduction { get; set; }
     }
 }

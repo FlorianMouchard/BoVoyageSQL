@@ -1,4 +1,7 @@
-﻿using BoVoyage.Framework.UI;
+﻿using AppliBoVoyage.Dal;
+using AppliBoVoyage.Metier;
+using BoVoyage.Framework.UI;
+using BoVoyage.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +13,24 @@ namespace AppliBoVoyage.UI
     public class ModuleGestionParticipants
     {
         private Menu menu;
+        private static readonly List<InformationAffichage> strategieAffichageParticipants
+           = new List<InformationAffichage>();
+        static ModuleGestionParticipants()
+        {
+
+            strategieAffichageParticipants = new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<Participant>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<Participant>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prénom", 20),
+                InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Participant>(x=>x.Telephone, "Téléphone", 10),
+                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date de naissance", 10),
+                InformationAffichage.Creer<Participant>(x=>x.Age, "Age", 3),
+                InformationAffichage.Creer<Participant>(x=>x.Reduction, "Réduction", 10),
+
+            };
+        }
 
         private void InitialiserMenu()
         {
@@ -48,7 +69,9 @@ namespace AppliBoVoyage.UI
         }
         private void ConsulterParticipants()
         {
-            ConsoleHelper.AfficherEntete("Liste des participants");
+            ConsoleHelper.AfficherEntete("Liste des participants");            
+            var liste = Application.GetBaseDonnees().Participants.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageParticipants);
         }
         private void RechercherParticipant()
         {
@@ -57,6 +80,23 @@ namespace AppliBoVoyage.UI
         private void AjouterParticipant()
         {
             ConsoleHelper.AfficherEntete("Ajouter un participant");
+            BaseDonnees context = new BaseDonnees();
+            var participant = new Participant
+            {
+                Civilité = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
+                Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
+                Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
+                Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
+                Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : "),
+                DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),                
+                Reduction = ConsoleSaisie.SaisirDecimalObligatoire("Réduction : ")
+
+            };
+            participant.Age = DateTime.Now.Year - participant.DateNaissance.Year -
+                         (DateTime.Now.Month < participant.DateNaissance.Month ? 1 :
+                         DateTime.Now.Day < participant.DateNaissance.Day ? 1 : 0);
+            context.Participants.Add(participant);
+            context.SaveChanges();
         }
         private void ModifierParticipant()
         {
