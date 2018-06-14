@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
+using AppliBoVoyage.Metier;
 
 namespace AppliBoVoyage.UI
 {
@@ -54,6 +55,12 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Nouvelle reservation");
 
+
+            var dossierResa = new DossierReservation();
+            {
+                dossierResa.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Numero de carte bancaire: ");
+                dossierResa.IdClient = ConsoleSaisie.SaisirEntierObligatoire("Identifiant du client: ");
+            }
         }
 
         private void SupprimerResa()
