@@ -1,20 +1,21 @@
 ﻿using System;
-using AppliBoVoyage.Lib;
+using AppliBoVoyage.UI;
+using BoVoyage.Framework.UI;
 
 namespace LocaMat.UI
 {
     public class Application
     {
         private Menu menuPrincipal;
-        private ModuleGestionClients moduleGestionClients;
-        private ModuleGestionVoyages moduleGestionVoyage;
+        private ModuleGestionClientèle moduleGestionClients;
+        private ModuleGestionVoyages moduleGestionVoyages;
         private ModuleGestionDossiersResa moduleGestionDossiersResa;
 
         private void InitialiserModules()
         {
-            this.moduleGestionClients = new ModuleGestionClients();
+            this.moduleGestionClients = new ModuleGestionClientèle();
             this.moduleGestionVoyages = new ModuleGestionVoyages();
-            this.moduleGestionDossiersResa = new moduleGestionDossiersResa();
+            this.moduleGestionDossiersResa = new ModuleGestionDossiersResa();
         }
 
         private void InitialiserMenuPrincipal()
