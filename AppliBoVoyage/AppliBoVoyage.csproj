@@ -71,7 +71,7 @@
     <Compile Include="UI\SousModuleAgence.cs" />
     <Compile Include="UI\SousModuleOffre.cs" />
     <Compile Include="UI\ModuleGestionParticipants.cs" />
-    <Compile Include="UI\ModuleGestionClientèle.cs" />
+    <Compile Include="UI\ModuleGestionClientele.cs" />
     <Compile Include="UI\ModuleGestionDossiersResa.cs" />
     <Compile Include="UI\ModuleGestionVoyages.cs" />
     <Compile Include="UI\ModuleGestionClients.cs" />
