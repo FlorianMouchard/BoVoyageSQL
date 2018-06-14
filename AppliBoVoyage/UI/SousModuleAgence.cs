@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
+using AppliBoVoyage.Metier;
 
 namespace AppliBoVoyage.UI
 {
@@ -59,7 +60,10 @@ namespace AppliBoVoyage.UI
         private void AjouterAgence()
         {
             ConsoleHelper.AfficherEntete("Nouvelle agence");
-
+            var agence = new AgenceVoyage ();
+            {
+                agence.Nom = ConsoleSaisie.SaisirChaineObligatoire("Raison Sociale: ");
+            }
         }
 
 

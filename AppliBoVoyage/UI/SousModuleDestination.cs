@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
+using System.Linq;
+using AppliBoVoyage.Metier;
 
 namespace AppliBoVoyage.UI
 {
     class SousModuleDestination
     {
-          
+
         private Menu menu;
 
         private void MenuDestination()
@@ -53,9 +55,19 @@ namespace AppliBoVoyage.UI
         }
 
 
+
         private void AjouterDestination()
         {
             ConsoleHelper.AfficherEntete("Nouvelle destination");
+            var destination = new Destination();
+            {
+
+                destination.Pays = ConsoleSaisie.SaisirChaineObligatoire("Pays de destination: ");
+                destination.Region = ConsoleSaisie.SaisirChaineObligatoire("Region de destination: ");
+                destination.Continent = ConsoleSaisie.SaisirChaineOptionnelle("Continent: ");
+                destination.Description = ConsoleSaisie.SaisirChaineOptionnelle("Description de la destination: ");
+
+            }
 
         }
 
@@ -71,10 +83,13 @@ namespace AppliBoVoyage.UI
 
         }
     }
-
-
-
-
-}
     
+}
+
+
+
+
+
+
+   
 
