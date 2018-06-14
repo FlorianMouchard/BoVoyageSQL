@@ -45,6 +45,7 @@ namespace AppliBoVoyage.UI
         {
             if (this.menu == null)
             {
+                this.InitialisatonModules();
                 this.InitialiserMenuVoyages();
             }
           this.menu.Afficher();
