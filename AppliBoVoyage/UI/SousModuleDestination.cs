@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
 using System.Linq;
 using AppliBoVoyage.Metier;
+using AppliBoVoyage.Dal;
 
 namespace AppliBoVoyage.UI
 {
@@ -68,6 +69,9 @@ namespace AppliBoVoyage.UI
                 destination.Description = ConsoleSaisie.SaisirChaineOptionnelle("Description de la destination: ");
 
             }
+            var db = new BaseDonnees();
+            db.Destinations.Add(destination);
+            db.SaveChanges();
 
         }
 

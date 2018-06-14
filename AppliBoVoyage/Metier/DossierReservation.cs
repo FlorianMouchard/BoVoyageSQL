@@ -18,16 +18,16 @@ namespace AppliBoVoyage.Metier
         [ForeignKey("IdClient")]
         public virtual Client Clients { get; set; }
 
-        public int Pays { get; set; }
+        public string Pays { get; set; }
         [ForeignKey("Pays")]
         public virtual Destination PaysDestination { get; set; }
 
 
-        public int DateAller { get; set; }
+        public DateTime DateAller { get; set; }
         [ForeignKey("DateAller")]
         public virtual Voyage VoyageAller { get; set; }
 
-        public int DateRetour { get; set; }
+        public DateTime DateRetour { get; set; }
         [ForeignKey("DateRetour")]
         public virtual Voyage VoyageRetour { get; set; }
 

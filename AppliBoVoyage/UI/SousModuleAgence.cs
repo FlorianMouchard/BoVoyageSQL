@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
 using AppliBoVoyage.Metier;
+using AppliBoVoyage.Dal;
 
 namespace AppliBoVoyage.UI
 {
@@ -52,7 +53,8 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Les agences");
 
-
+            var liste = new BaseDonnees().AgencesVoyage.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageAgences);
 
         }
 

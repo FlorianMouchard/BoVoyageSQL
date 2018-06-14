@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
 using System.Linq;
 using AppliBoVoyage.Metier;
+using AppliBoVoyage.Dal;
 
 namespace AppliBoVoyage.UI
 {
@@ -65,7 +66,12 @@ namespace AppliBoVoyage.UI
                 voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire ("Nombre de place(s) disponible(s): ");
                 voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Prix du voyage tout compris ");
             }
-            }
+            var db = new BaseDonnees();
+            db.Voyages.Add(voyage);
+            db.SaveChanges();
+
+
+        }
 
         private void ModifierOffre()
         {
