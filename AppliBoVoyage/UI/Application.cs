@@ -1,39 +1,41 @@
 ﻿using System;
-using AppliBoVoyage.Lib;
+using BoVoyage.Framework.UI;
+using AppliBoVoyage.UI;
 
-namespace LocaMat.UI
+
+namespace BoVoyage.UI
 {
     public class Application
     {
         private Menu menuPrincipal;
         private ModuleGestionClients moduleGestionClients;
-        private ModuleGestionVoyages moduleGestionVoyage;
+        private ModuleGestionVoyages moduleGestionVoyages;
         private ModuleGestionDossiersResa moduleGestionDossiersResa;
 
         private void InitialiserModules()
         {
             this.moduleGestionClients = new ModuleGestionClients();
             this.moduleGestionVoyages = new ModuleGestionVoyages();
-            this.moduleGestionDossiersResa = new moduleGestionDossiersResa();
+            this.moduleGestionDossiersResa = new ModuleGestionDossiersResa();
         }
 
         private void InitialiserMenuPrincipal()
         {
             this.menuPrincipal = new Menu("Menu principal");
-            this.menuPrincipal.AjouterElement(new ElementMenu("1", "Gestion des produits")
-            {
-                AfficherLigneRetourMenuApresExecution = false,
-                FonctionAExecuter = this.moduleGestionProduits.Demarrer
-            });
-            this.menuPrincipal.AjouterElement(new ElementMenu("2", "Gestion des agences")
-            {
-                AfficherLigneRetourMenuApresExecution = false,
-                FonctionAExecuter = this.moduleGestionAgences.Demarrer
-            });
-            this.menuPrincipal.AjouterElement(new ElementMenu("3", "Gestion des clients")
+            this.menuPrincipal.AjouterElement(new ElementMenu("1", "Gestion des clients")
             {
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionClients.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("2", "Gestion des voyages")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionVoyages.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("3", "Gestion des dossiers de réservation")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionDossiersResa.Demarrer
             });
             this.menuPrincipal.AjouterElement(new ElementMenuQuitterMenu("Q", "Quitter")
             {
