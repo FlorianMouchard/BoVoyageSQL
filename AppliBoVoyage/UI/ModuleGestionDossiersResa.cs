@@ -7,7 +7,7 @@ using BoVoyage.Framework.UI;
 
 namespace AppliBoVoyage.UI
 {
-    class ModuleGestionDossiersResa
+    public class ModuleGestionDossiersResa
     {
         private Menu menu;
            
