@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\BaseDonnees.cs" />
     <Compile Include="Metier\AgenceVoyage.cs" />
     <Compile Include="Metier\Assurance.cs" />
     <Compile Include="Metier\AssuranceAnnulation.cs" />
