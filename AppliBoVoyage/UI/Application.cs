@@ -1,7 +1,9 @@
 ﻿using System;
 using BoVoyage.Framework.UI;
 using AppliBoVoyage.UI;
-
+using System.Data.SqlClient;
+using System.Configuration;
+using AppliBoVoyage.Dal;
 
 namespace BoVoyage.UI
 {
@@ -49,6 +51,16 @@ namespace BoVoyage.UI
             this.InitialiserMenuPrincipal();
 
             this.menuPrincipal.Afficher();
+        }
+        public static SqlConnection GetConnexion()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["Connexion"].ConnectionString;
+            return new SqlConnection(connectionString);
+        }
+
+        public static BaseDonnees GetBaseDonnees()
+        {
+            return new BaseDonnees();
         }
     }
 }

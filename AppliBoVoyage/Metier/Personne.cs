@@ -8,6 +8,7 @@ namespace AppliBoVoyage.Metier
 {
     public abstract class Personne
     {
+        public int Id { get; set; }
         public string Civilité { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
