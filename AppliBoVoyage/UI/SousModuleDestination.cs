@@ -9,7 +9,7 @@ using AppliBoVoyage.Metier;
 
 namespace AppliBoVoyage.UI
 {
-    class SousModuleDestination
+    public class SousModuleDestination
     {
 
         private Menu menu;
