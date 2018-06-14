@@ -14,7 +14,7 @@ namespace BoVoyage.UI
 
         private void InitialiserModules()
         {
-            this.moduleGestionClients = new ModuleGestionClients();
+            this.moduleGestionClients = new ModuleGestionClientèle();
             this.moduleGestionVoyages = new ModuleGestionVoyages();
             this.moduleGestionDossiersResa = new ModuleGestionDossiersResa();
         }
