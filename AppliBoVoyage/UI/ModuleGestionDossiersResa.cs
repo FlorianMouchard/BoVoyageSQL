@@ -10,7 +10,7 @@ namespace AppliBoVoyage.UI
     class ModuleGestionDossiersResa
     {
         private Menu menu;
-
+           
 
         private void InitialiserMenuResa()
         {
@@ -63,7 +63,6 @@ namespace AppliBoVoyage.UI
         }
     }
 }
-
 
 
 
