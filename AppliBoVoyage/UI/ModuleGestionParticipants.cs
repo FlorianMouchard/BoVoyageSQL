@@ -48,23 +48,23 @@ namespace AppliBoVoyage.UI
         }
         private void ConsulterParticipants()
         {
-
+            ConsoleHelper.AfficherEntete("Liste des participants");
         }
         private void RechercherParticipant()
         {
-
+            ConsoleHelper.AfficherEntete("Rechercher un participant");
         }
         private void AjouterParticipant()
         {
-
+            ConsoleHelper.AfficherEntete("Ajouter un participant");
         }
         private void ModifierParticipant()
         {
-
+            ConsoleHelper.AfficherEntete("Modifier un participant");
         }
         private void SupprimerParticipant()
         {
-
+            ConsoleHelper.AfficherEntete("Supprimer un participant");
         }
     }
 }
