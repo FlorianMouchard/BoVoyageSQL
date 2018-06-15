@@ -43,7 +43,7 @@ namespace AppliBoVoyage.UI
             });
             this.menu.AjouterElement(new ElementMenu("3", "Modifier offre")
             {
-                FonctionAExecuter = this.SupprimerOffre
+                FonctionAExecuter = this.ModifierOffre
             });
             this.menu.AjouterElement(new ElementMenu("4", "Supprimer offre")
             {
@@ -122,7 +122,7 @@ namespace AppliBoVoyage.UI
             Console.WriteLine("Entrez l'Id de la destination à supprimer: ");
             RechercherOffre();
             
-            var supprimerOffre = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            var supprimerOffre = ConsoleSaisie.SaisirEntierObligatoire("Confirmez l'Id de l'offre à supprimer : ");
             using (BaseDonnees context = new BaseDonnees())
             {
                 var query = context.Voyages
@@ -134,7 +134,7 @@ namespace AppliBoVoyage.UI
         }
         private void RechercherOffre()
         {
-            ConsoleHelper.AfficherEntete("Rechercher une offre");
+           
             var rechercheOffre =
 
                  ConsoleSaisie.SaisirEntierObligatoire("IdDestination : ");
