@@ -146,7 +146,7 @@ namespace AppliBoVoyage.UI
         }
         private void RechercherAgence()
         {
-            ConsoleHelper.AfficherEntete("Rechercher une agence");
+            
             var rechercheAgence =
 
                  ConsoleSaisie.SaisirChaineObligatoire("Nom : ");

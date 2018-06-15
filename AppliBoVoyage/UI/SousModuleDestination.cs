@@ -43,7 +43,7 @@ namespace AppliBoVoyage.UI
             });
             this.menu.AjouterElement(new ElementMenu("3", "Modifier destination")
             {
-                FonctionAExecuter = this.SupprimerDestination
+                FonctionAExecuter = this.ModifierDestination
             });
             this.menu.AjouterElement(new ElementMenu("4", "Supprimer destination")
             {
@@ -136,7 +136,7 @@ namespace AppliBoVoyage.UI
         }
         private void RechercherDestination()
         {
-            ConsoleHelper.AfficherEntete("Rechercher une destination");
+            
             var rechercheDestination =
 
                  ConsoleSaisie.SaisirChaineObligatoire("Pays : ");
