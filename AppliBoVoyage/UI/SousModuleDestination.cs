@@ -105,6 +105,22 @@ namespace AppliBoVoyage.UI
             ConsoleHelper.AfficherEntete("Supprimer une offre");
 
         }
+        private void RechercherDestination()
+        {
+            ConsoleHelper.AfficherEntete("Rechercher une destination");
+            var rechercheDestination =
+
+                 ConsoleSaisie.SaisirChaineObligatoire("Pays : ");
+
+
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Destinations
+                    .Where(x => x.Pays.Contains(rechercheDestination)).ToList();
+                ConsoleHelper.AfficherListe(query, strategieAffichageDestinations);
+
+            }
+        }
     }
     
 }

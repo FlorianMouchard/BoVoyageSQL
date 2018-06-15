@@ -20,14 +20,10 @@ namespace AppliBoVoyage.Metier
             get
             {
                 return DateTime.Now.Year - DateNaissance.Year -
-                         (DateTime.Now.Month < DateNaissance.Month ? 1 :
+                         (DateTime.Now.Month > DateNaissance.Month ? 1 :
                          DateTime.Now.Day < DateNaissance.Day ? 1 : 0);
             }
-
-            set
-            {
-                Age = value;
-            }
+                       
         }
     }
 }
