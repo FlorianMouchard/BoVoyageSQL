@@ -12,7 +12,21 @@ namespace AppliBoVoyage.UI
     public class ModuleGestionDossiersResa
     {
         private Menu menu;
-           
+
+        private static readonly List<InformationAffichage> strategieAffichageDossiers
+        = new List<InformationAffichage>();
+        static ModuleGestionDossiersResa()
+        {
+            strategieAffichageDossiers = new List<InformationAffichage>
+            {
+            InformationAffichage.Creer<DossierReservation>(x => x.Id, "Id Dossier", 12),
+            InformationAffichage.Creer<DossierReservation>(x => x.IdVoyage, "Voyage", 12),
+            InformationAffichage.Creer<DossierReservation>(x => x.IdClient, "Client", 15),
+            InformationAffichage.Creer<DossierReservation>(x => x.EtatDossierResa, "Etat", 10),
+            InformationAffichage.Creer<DossierReservation>(x => x.RaisonAnnulationDossier, "Annulé", 10),
+            };
+        }
+
 
         private void InitialiserMenuResa()
         {
@@ -49,14 +63,9 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Dossier de reservation");
 
-            Console.WriteLine("Entrer le numéro du Client à afficher: ");
-            int clientAAfficher = int.Parse(Console.ReadLine());
+            RechercherResa();
 
-            //using (BaseDonnees context = new BaseDonnees())
-            //{
-            //   var ClientAAfficher = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
-            //}
-            //Console.WriteLine("Pour modifier l'enregistrement, appuyer sur M...");
+            Console.WriteLine("Pour modifier l'enregistrement, appuyer sur M...");
         }
 
 
@@ -82,16 +91,32 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer une reservation");
 
-            //Console.WriteLine("Entrer le numéro du Client à supprimer: ");
-            //int clientASupprimer = int.Parse(Console.ReadLine());
+            RechercherResa();
 
-            //using (BaseDonnees context = new BaseDonnees())
-            //{
-            //    var ClientASupprimer = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
-            //}
+            Console.WriteLine("Entrer le numéro du dossier à supprimer: ");
+            int dossierASupprimer = int.Parse(Console.ReadLine());
 
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.DossiersReservation.First(x => x.Id.Equals(dossierASupprimer));
+                context.DossiersReservation.Remove(query);
+                context.SaveChanges();
+            }
+            
+        }
+        private void RechercherResa()
+        {
 
+            Console.WriteLine("Entrer le client ID: ");
+            var clientAAfficher = int.Parse(Console.ReadLine());
 
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.DossiersReservation
+                    .Where(x => x.IdClient.Equals(clientAAfficher)).ToList();
+                ConsoleHelper.AfficherListe(query, strategieAffichageDossiers);
+
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace AppliBoVoyage.Metier
 
         public int Id { get; set; }
 
-        public virtual ICollection<Voyage> Voyages { get; set; }
+        //public virtual ICollection<Voyage> Voyages { get; set; }
 
         //public string DescriptionVoyage { get; set; }
         //[ForeignKey ("Voyage")]
