@@ -27,6 +27,7 @@ namespace AppliBoVoyage.UI
             InformationAffichage.Creer<Voyage>(x => x.PlacesDisponibles, "Places", 6),
             InformationAffichage.Creer<Voyage>(x => x.IdDestination, "Dest.", 6),
             InformationAffichage.Creer<Voyage>(x => x.IdAgence, "Proposé par", 15),
+            InformationAffichage.Creer<Voyage>(x => x.TarifToutCompris, "Prix agence", 15),
             };
         }
 
@@ -82,7 +83,9 @@ namespace AppliBoVoyage.UI
                 voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller: ");
                 voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour: ");
                 voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Nombre de place(s) disponible(s) :");
+                voyage.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("ID de la destination :");
                 voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Prix du voyage tout compris: ");
+                voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("ID de l'agence de voyage :");
             }
             var db = new BaseDonnees();
             db.Voyages.Add(voyage);

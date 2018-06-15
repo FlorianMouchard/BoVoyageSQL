@@ -19,6 +19,7 @@ namespace AppliBoVoyage.Metier
         public DateTime DateRetour { get; set; }
 
         public int PlacesDisponibles { get; set; }
+
         public decimal TarifToutCompris { get; set; }
 
         public int IdDestination { get; set; }

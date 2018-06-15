@@ -27,6 +27,7 @@ namespace AppliBoVoyage.Metier
 
 
 
+
         //public DateTime DateAller { get; set; }
         //[ForeignKey("DateAller")]
 
