@@ -8,5 +8,6 @@ namespace AppliBoVoyage.Metier
 {
     public class Assurance
     {
+        public int Id { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace AppliBoVoyage.Metier
     public abstract class Personne
     {
         public int Id { get; set; }
-        public string Civilité { get; set; }
+        public string Civilite { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Adresse { get; set; }
@@ -23,11 +23,11 @@ namespace AppliBoVoyage.Metier
                          (DateTime.Now.Month < DateNaissance.Month ? 1 :
                          DateTime.Now.Day < DateNaissance.Day ? 1 : 0);
             }
+
             set
             {
                 Age = value;
             }
-
         }
     }
 }

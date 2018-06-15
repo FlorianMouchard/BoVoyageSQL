@@ -47,16 +47,16 @@ namespace AppliBoVoyage.UI
 
          private void ConsulterResa()
         {
-        //    ConsoleHelper.AfficherEntete("Dossier de reservation");
+            ConsoleHelper.AfficherEntete("Dossier de reservation");
 
-        //    Console.WriteLine("Entrer le numéro du Client à afficher: ");
-        //    int clientAAfficher = int.Parse(Console.ReadLine());
+            Console.WriteLine("Entrer le numéro du Client à afficher: ");
+            int clientAAfficher = int.Parse(Console.ReadLine());
 
-        //    using (BaseDonnees context = new BaseDonnees())
-        //    {
-        //        var ClientAAfficher = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
-        //    }
-        //    Console.WriteLine("Pour modifier l'enregistrement, appuyer sur M...");
+            //using (BaseDonnees context = new BaseDonnees())
+            //{
+            //   var ClientAAfficher = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
+            //}
+            //Console.WriteLine("Pour modifier l'enregistrement, appuyer sur M...");
         }
 
 
@@ -68,9 +68,7 @@ namespace AppliBoVoyage.UI
             var dossierResa = new DossierReservation();
             {
                 dossierResa.Clients.Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom du client: ");
-                dossierResa.Pays = ConsoleSaisie.SaisirChaineObligatoire("Pays de destination: ");
-                dossierResa.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller: ");
-                dossierResa.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour: ");
+                dossierResa.IdVoyage = ConsoleSaisie.SaisirEntierObligatoire("Voyage : ");
                 dossierResa.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Numero de carte bancaire: ");
                 dossierResa.IdClient = ConsoleSaisie.SaisirEntierObligatoire("Identifiant du client: ");
             }

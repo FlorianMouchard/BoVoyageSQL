@@ -20,9 +20,9 @@ namespace AppliBoVoyage.UI
         {
             strategieAffichageAgences = new List<InformationAffichage>
             {
-            InformationAffichage.Creer<AgenceVoyage>(x => x.Nom, "Raison sociale :", 10),
-            InformationAffichage.Creer<AgenceVoyage>(x => x.Voyages, "Voyage proposé :", 20),
-            InformationAffichage.Creer<AgenceVoyage>(x => x.IdVoyage, "Id Voyage :", 3),
+            InformationAffichage.Creer<AgenceVoyage>(x => x.Id, "Id Agence :", 10),
+            InformationAffichage.Creer<AgenceVoyage>(x => x.Nom, "Raison sociale :", 20),
+
             };
         }
 
@@ -77,6 +77,10 @@ namespace AppliBoVoyage.UI
             {
                 agence.Nom = ConsoleSaisie.SaisirChaineObligatoire("Raison Sociale: ");
             }
+
+            var db = new BaseDonnees();
+            db.AgencesVoyage.Add(agence);
+            db.SaveChanges();
         }
 
 

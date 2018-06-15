@@ -7,6 +7,8 @@ using BoVoyage.Framework.UI;
 using System.Linq;
 using AppliBoVoyage.Metier;
 using AppliBoVoyage.Dal;
+using BoVoyage.UI;
+
 
 namespace AppliBoVoyage.UI
 {
@@ -14,7 +16,22 @@ namespace AppliBoVoyage.UI
      {
             private Menu menu;
 
-            private void MenuOffre()
+        private static readonly List<InformationAffichage> strategieAffichageOffres
+                = new List<InformationAffichage>();
+        static SousModuleOffre()
+        {
+            strategieAffichageOffres = new List<InformationAffichage>
+            {
+            InformationAffichage.Creer<Voyage>(x => x.Id, "Id Voyage :", 12),
+            InformationAffichage.Creer<Voyage>(x => x.DateAller, "Du :", 12),
+            InformationAffichage.Creer<Voyage>(x => x.DateRetour, "Au :", 15),
+            InformationAffichage.Creer<Voyage>(x => x.PlacesDisponibles, "Places", 6),
+            InformationAffichage.Creer<Voyage>(x => x.IdDestination, "Dest. :", 6),
+            InformationAffichage.Creer<Voyage>(x => x.IdAgence, "Proposé par :", 15),
+            };
+        }
+
+        private void MenuOffre()
             {
                 this.menu = new Menu("Gestion des offres");
                 this.menu.AjouterElement(new ElementMenu("1", "Consulter offre")
@@ -52,11 +69,13 @@ namespace AppliBoVoyage.UI
             {
                 ConsoleHelper.AfficherEntete("Offres");
 
-            //var liste = new BaseDonnees().Agences.ToList();
-            //ConsoleHelper.AfficherListe(liste);
-            }
-        
-            private void AjouterOffre()
+
+            var liste = Application.GetBaseDonnees().Voyages.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageOffres);
+
+        }
+
+        private void AjouterOffre()
             {
                 ConsoleHelper.AfficherEntete("Nouvelle offre");
             var voyage = new Voyage();
