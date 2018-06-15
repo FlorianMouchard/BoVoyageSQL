@@ -107,12 +107,12 @@ namespace AppliBoVoyage.UI
         {
 
             Console.WriteLine("Entrer le client ID: ");
-            var clientAAfficher = int.Parse(Console.ReadLine());
+            int clientAAfficher = int.Parse(Console.ReadLine());
 
             using (BaseDonnees context = new BaseDonnees())
             {
                 var query = context.DossiersReservation
-                    .Where(x => x.IdClient.Equals(clientAAfficher)).ToList();
+                    .Where(x => x.Id.Equals(clientAAfficher)).ToList();
                 ConsoleHelper.AfficherListe(query, strategieAffichageDossiers);
 
             }

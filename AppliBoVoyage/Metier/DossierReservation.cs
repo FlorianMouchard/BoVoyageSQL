@@ -21,8 +21,7 @@ namespace AppliBoVoyage.Metier
 
 
         public int IdVoyage { get; set; }
-        [ForeignKey("IdVoyage")]
-        public virtual Voyage Voyages { get; set; }
+        
 
 
 
