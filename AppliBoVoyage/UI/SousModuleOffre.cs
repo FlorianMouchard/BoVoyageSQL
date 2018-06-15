@@ -96,7 +96,7 @@ namespace AppliBoVoyage.UI
             ConsoleHelper.AfficherEntete("Modifier une offre");
             Console.WriteLine("Entrez le nom de l'offre à modifier");
             RechercherOffre();
-            Console.WriteLine("Entrez l'Id de l'offre à modifier");
+            Console.WriteLine("Entrez l'Id du voyage à modifier");
             var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
             using (BaseDonnees context = new BaseDonnees())
             {
@@ -105,7 +105,7 @@ namespace AppliBoVoyage.UI
 
                 query.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller : ");
                 query.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour : ");
-                query.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Nombre de place disponible : ");
+                query.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Nombre de places disponibles : ");
                 query.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("IdDestination : ");
                 query.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("IdAgence : ");
 
@@ -122,7 +122,7 @@ namespace AppliBoVoyage.UI
             Console.WriteLine("Entrez l'Id de la destination à supprimer: ");
             RechercherOffre();
             
-            var supprimerOffre = ConsoleSaisie.SaisirEntierObligatoire("Confirmez l'Id de l'offre à supprimer : ");
+            var supprimerOffre = ConsoleSaisie.SaisirEntierObligatoire("Confirmez l'Id du voyage à supprimer : ");
             using (BaseDonnees context = new BaseDonnees())
             {
                 var query = context.Voyages

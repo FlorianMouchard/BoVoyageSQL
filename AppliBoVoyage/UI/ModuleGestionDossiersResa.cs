@@ -58,7 +58,7 @@ namespace AppliBoVoyage.UI
 
 
 
-         private void ConsulterResa()
+        private void ConsulterResa()
         {
             ConsoleHelper.AfficherEntete("Dossier de reservation");
 
@@ -101,7 +101,7 @@ namespace AppliBoVoyage.UI
                 context.DossiersReservation.Remove(query);
                 context.SaveChanges();
             }
-            
+
         }
         private void RechercherResa()
         {
@@ -115,6 +115,27 @@ namespace AppliBoVoyage.UI
                     .Where(x => x.IdClient.Equals(clientAAfficher)).ToList();
                 ConsoleHelper.AfficherListe(query, strategieAffichageDossiers);
 
+            }
+        }
+        private void ModifierDossier()
+        {
+            ConsoleHelper.AfficherEntete("Modifier un dossier");
+            Console.WriteLine("Entrez l'Id du Dossier à modifier");
+            RechercherResa();
+
+            var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.DossiersReservation
+                    .First(x => x.Id.Equals(modifier));
+
+                query.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Numéro de la carte bancaire : ");
+                query.IdClient = ConsoleSaisie.SaisirEntierObligatoire("IdClient : ");
+                query.NombreParticipants = ConsoleSaisie.SaisirEntierObligatoire("Nombre de participant : ");
+                query.IdVoyage = ConsoleSaisie.SaisirEntierObligatoire("IdVoyage : ");
+
+
+                context.SaveChanges();
             }
         }
     }

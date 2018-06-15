@@ -34,9 +34,9 @@ namespace AppliBoVoyage.Metier
         //[ForeignKey("DateRetour")]
         //public virtual Voyage Voyages { get; set; }
 
-        //public int NombreVoyageurs { count.Participants; set; }
-        //[ForeignKey("Voyageurs")]
-        //public virtual Participant Participants { get; set; }
+        public int NombreParticipants { get; set; }
+        
+        
 
         public string NumeroCarteBancaire { get; set; }
 
