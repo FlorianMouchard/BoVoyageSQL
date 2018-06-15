@@ -22,12 +22,12 @@ namespace AppliBoVoyage.UI
             strategieAffichageClients = new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 20),
-                InformationAffichage.Creer<Client>(x=>x.Prenom, "Prénom", 20),
-                InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 15),
+                InformationAffichage.Creer<Client>(x=>x.Prenom, "Prénom", 15),
+                InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 30),
                 InformationAffichage.Creer<Client>(x=>x.Telephone, "Téléphone", 10),
-                InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
-                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 10),
+                InformationAffichage.Creer<Client>(x=>x.Email, "Email", 30),
+                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 17),
                 InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3)
 
             };
@@ -107,10 +107,7 @@ namespace AppliBoVoyage.UI
                 DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
 
             };
-
-            client.Age = DateTime.Now.Year - client.DateNaissance.Year -
-                         (DateTime.Now.Month < client.DateNaissance.Month ? 1 :
-                         DateTime.Now.Day < client.DateNaissance.Day ? 1 : 0);
+           
             context.Clients.Add(client);
             context.SaveChanges();
         }

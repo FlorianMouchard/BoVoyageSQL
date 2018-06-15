@@ -96,6 +96,22 @@ namespace AppliBoVoyage.UI
             ConsoleHelper.AfficherEntete("Supprimer une agence");
 
         }
+        private void RechercherAgence()
+        {
+            ConsoleHelper.AfficherEntete("Rechercher une agence");
+            var rechercheAgence =
+
+                 ConsoleSaisie.SaisirChaineObligatoire("Nom : ");
+
+
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.AgencesVoyage
+                    .Where(x => x.Nom.Contains(rechercheAgence)).ToList();
+                ConsoleHelper.AfficherListe(query, strategieAffichageAgences);
+
+            }
+        }
 
     }
 

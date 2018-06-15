@@ -21,11 +21,11 @@ namespace AppliBoVoyage.UI
             strategieAffichageParticipants = new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Participant>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Participant>(x=>x.Nom, "Nom", 20),
-                InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prénom", 20),
-                InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Participant>(x=>x.Nom, "Nom", 15),
+                InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prénom", 15),
+                InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 30),
                 InformationAffichage.Creer<Participant>(x=>x.Telephone, "Téléphone", 10),
-                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date naissance", 15),
+                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date naissance", 17),
                 InformationAffichage.Creer<Participant>(x=>x.Age, "Age", 3),
                 InformationAffichage.Creer<Participant>(x=>x.Reduction, "Réduction", 10),
 
@@ -76,6 +76,18 @@ namespace AppliBoVoyage.UI
         private void RechercherParticipant()
         {
             ConsoleHelper.AfficherEntete("Rechercher un participant");
+            var rechercheParticipant =
+
+                 ConsoleSaisie.SaisirChaineObligatoire("Nom : ");
+
+
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Participants
+                    .Where(x => x.Nom.Contains(rechercheParticipant)).ToList();
+                ConsoleHelper.AfficherListe(query, strategieAffichageParticipants);
+
+            }
         }
         private void AjouterParticipant()
         {
