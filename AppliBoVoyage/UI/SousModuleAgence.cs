@@ -73,7 +73,7 @@ namespace AppliBoVoyage.UI
         private void AjouterAgence()
         {
             ConsoleHelper.AfficherEntete("Nouvelle agence");
-            var agence = new AgenceVoyage ();
+            var agence = new AgenceVoyage();
             {
                 agence.Nom = ConsoleSaisie.SaisirChaineObligatoire("Raison Sociale: ");
             }
@@ -87,7 +87,20 @@ namespace AppliBoVoyage.UI
         private void ModifierAgence()
         {
             ConsoleHelper.AfficherEntete("Modification d'une agence");
+            Console.WriteLine("Entrez le nom de l'agence à modifier");
+            RechercherAgence();
+            Console.WriteLine("Entrez l'Id de l'agence à modifier");
+            var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.AgencesVoyage
+                    .First(x => x.Id.Equals(modifier));
 
+                query.Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : ");
+
+                context.SaveChanges();
+
+            }
         }
 
 
@@ -116,18 +129,17 @@ namespace AppliBoVoyage.UI
                 if (Saisie == 0)
 
                 {
-                    this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Annuler"));
+                    this.menu.AjouterElement(new ElementMenuQuitterMenu("0", "Annuler"));
                 }
 
                 else
                 {
 
-                        var agence = context.AgencesVoyage.SingleOrDefault(x => x.Id == Saisie);
-                        if (Saisie != null)
-                        {
-                            context.AgencesVoyage.Remove(agence);
-                            context.SaveChanges();
-                         }
+                    var agence = context.AgencesVoyage.SingleOrDefault(x => x.Id == Saisie);
+
+                    context.AgencesVoyage.Remove(agence);
+                    context.SaveChanges();
+
                     return;
                 };
             }

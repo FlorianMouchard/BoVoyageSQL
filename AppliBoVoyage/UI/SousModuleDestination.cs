@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
-using System.Linq;
 using AppliBoVoyage.Metier;
 using AppliBoVoyage.Dal;
 using BoVoyage.UI;
@@ -69,9 +68,9 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Destination");
 
-                var liste = Application.GetBaseDonnees().Destinations.ToList();
-                ConsoleHelper.AfficherListe(liste, strategieAffichageDestinations);
-                       
+            var liste = Application.GetBaseDonnees().Destinations.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageDestinations);
+
         }
 
 
@@ -97,12 +96,42 @@ namespace AppliBoVoyage.UI
         private void ModifierDestination()
         {
             ConsoleHelper.AfficherEntete("Modifier une destination");
+            Console.WriteLine("Entrez le nom de la destination à modifier");
+            RechercherDestination();
+            Console.WriteLine("Entrez l'Id de la destination à modifier");
+            var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Destinations
+                    .First(x => x.Id.Equals(modifier));
+
+                query.Continent = ConsoleSaisie.SaisirChaineObligatoire("Continent : ");
+                query.Pays = ConsoleSaisie.SaisirChaineObligatoire("Pays : ");
+                query.Description = ConsoleSaisie.SaisirChaineObligatoire("Description : ");
+                query.Region = ConsoleSaisie.SaisirChaineObligatoire("Région : ");
+               
+
+                context.SaveChanges();
+            }
 
         }
 
         private void SupprimerDestination()
         {
-            ConsoleHelper.AfficherEntete("Supprimer une offre");
+
+            ConsoleHelper.AfficherEntete("Supprimer une destination");
+
+            Console.WriteLine("Entrez le nom de la destination à supprimer: ");
+            RechercherDestination();
+            Console.WriteLine("Entrez l'Id de la destination à supprimer");
+            var supprimerDestination = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Destinations
+                    .First(x => x.Id.Equals(supprimerDestination));
+                context.Destinations.Remove(query);
+                context.SaveChanges();
+            }
 
         }
         private void RechercherDestination()
@@ -122,7 +151,7 @@ namespace AppliBoVoyage.UI
             }
         }
     }
-    
+
 }
 
 
@@ -130,5 +159,5 @@ namespace AppliBoVoyage.UI
 
 
 
-   
+
 

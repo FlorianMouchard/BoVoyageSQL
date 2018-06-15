@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
-using System.Linq;
 using AppliBoVoyage.Metier;
 using AppliBoVoyage.Dal;
 using BoVoyage.UI;
@@ -95,15 +94,61 @@ namespace AppliBoVoyage.UI
         private void ModifierOffre()
         {
             ConsoleHelper.AfficherEntete("Modifier une offre");
+            Console.WriteLine("Entrez le nom de l'offre à modifier");
+            RechercherOffre();
+            Console.WriteLine("Entrez l'Id de l'offre à modifier");
+            var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Voyages
+                    .First(x => x.Id.Equals(modifier));
+
+                query.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller : ");
+                query.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour : ");
+                query.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Nombre de place disponible : ");
+                query.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("IdDestination : ");
+                query.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("IdAgence : ");
+
+
+                context.SaveChanges();
+            }
+
 
         }
 
         private void SupprimerOffre()
         {
             ConsoleHelper.AfficherEntete("Supprimer une offre");
+            Console.WriteLine("Entrez l'Id de la destination à supprimer: ");
+            RechercherOffre();
+            
+            var supprimerOffre = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Voyages
+                    .First(x => x.Id.Equals(supprimerOffre));
+                context.Voyages.Remove(query);
+                context.SaveChanges();
+            }
 
         }
-       
+        private void RechercherOffre()
+        {
+            ConsoleHelper.AfficherEntete("Rechercher une offre");
+            var rechercheOffre =
+
+                 ConsoleSaisie.SaisirEntierObligatoire("IdDestination : ");
+
+
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Voyages
+                    .Where(x => x.IdDestination.Equals(rechercheOffre)).ToList();
+                ConsoleHelper.AfficherListe(query, strategieAffichageOffres);
+
+            }
+        }
+
     }
 
 

@@ -104,19 +104,48 @@ namespace AppliBoVoyage.UI
                 Reduction = ConsoleSaisie.SaisirDecimalObligatoire("Réduction : ")
 
             };
-            //participant.Age = DateTime.Now.Year - participant.DateNaissance.Year -
-            //             (DateTime.Now.Month < participant.DateNaissance.Month ? 1 :
-            //             DateTime.Now.Day < participant.DateNaissance.Day ? 1 : 0);
+            
             context.Participants.Add(participant);
             context.SaveChanges();
         }
         private void ModifierParticipant()
         {
             ConsoleHelper.AfficherEntete("Modifier un participant");
+            Console.WriteLine("Entrez le nom du Participant à modifier");
+            RechercherParticipant();
+            Console.WriteLine("Entrez l'Id du participant à modifier");
+            var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Participants
+                    .First(x => x.Id.Equals(modifier));
+
+                query.Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : ");
+                query.Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : ");
+                query.Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : ");
+                query.Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : ");
+                query.Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : ");
+                query.DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : ");
+                query.Reduction = ConsoleSaisie.SaisirDecimalObligatoire("Réduction : ");
+
+                context.SaveChanges();
+            }
         }
         private void SupprimerParticipant()
         {
             ConsoleHelper.AfficherEntete("Supprimer un participant");
+            ConsoleHelper.AfficherEntete("Supprimer un participant");
+            Console.WriteLine("Entrez le nom du participant à supprimer: ");
+            RechercherParticipant();
+            Console.WriteLine("Entrez l'Id du participant à supprimer");
+            var supprimerParticipant = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Participants
+                    .First(x => x.Id.Equals(supprimerParticipant));
+                context.Participants.Remove(query);
+                context.SaveChanges();
+            }
         }
     }
 }

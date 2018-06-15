@@ -77,17 +77,13 @@ namespace AppliBoVoyage.UI
         private void RechercherClient()
         {
             ConsoleHelper.AfficherEntete("Rechercher un client");
-            var rechercheClient =
-
-                 ConsoleSaisie.SaisirChaineObligatoire("Nom : ");         
-                
-            
+            var rechercheClient = ConsoleSaisie.SaisirChaineObligatoire("Nom : ");       
+                            
             using (BaseDonnees context = new BaseDonnees())
             {
                 var query = context.Clients
                     .Where(x => x.Nom.Contains(rechercheClient)).ToList();
                 ConsoleHelper.AfficherListe(query, strategieAffichageClients);
-
             }
             
 
@@ -114,10 +110,41 @@ namespace AppliBoVoyage.UI
         private void ModifierClient()
         {
             ConsoleHelper.AfficherEntete("Modifier un client");
+            Console.WriteLine("Entrez le nom du client à modifier");
+            RechercherClient();
+            Console.WriteLine("Entrez l'Id du client à modifier");
+            var modifier = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Clients
+                    .First(x => x.Id.Equals(modifier));
+
+                query.Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : ");
+                query.Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : ");
+                query.Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : ");
+                query.Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : ");
+                query.Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : ");
+                query.Email = ConsoleSaisie.SaisirChaineObligatoire("Email : ");
+                query.DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : ");
+                                
+                context.SaveChanges();
+            }
         }
         private void SupprimerClient()
         {
             ConsoleHelper.AfficherEntete("Supprimer un client");
+            Console.WriteLine("Entrez le nom du client à supprimer: ");
+            RechercherClient();
+            Console.WriteLine("Entrez l'Id du client à supprimer");
+            var supprimerClient = ConsoleSaisie.SaisirEntierObligatoire("Id : ");
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Clients
+                    .First(x => x.Id.Equals(supprimerClient));
+                context.Clients.Remove(query);
+                context.SaveChanges();
+            }
+            
         }
     }
 }
