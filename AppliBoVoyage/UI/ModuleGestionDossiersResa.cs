@@ -22,8 +22,7 @@ namespace AppliBoVoyage.UI
             InformationAffichage.Creer<DossierReservation>(x => x.Id, "Id Dossier", 12),
             InformationAffichage.Creer<DossierReservation>(x => x.IdVoyage, "Voyage", 12),
             InformationAffichage.Creer<DossierReservation>(x => x.IdClient, "Client", 15),
-            InformationAffichage.Creer<DossierReservation>(x => x.EtatDossierResa, "Etat", 10),
-            InformationAffichage.Creer<DossierReservation>(x => x.RaisonAnnulationDossier, "Annulé", 10),
+
             };
         }
 

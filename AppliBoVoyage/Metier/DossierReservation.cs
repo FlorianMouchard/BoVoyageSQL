@@ -25,13 +25,6 @@ namespace AppliBoVoyage.Metier
         public virtual Voyage Voyages { get; set; }
 
 
-        public int EtatDossierResa { get; set; }
-        [ForeignKey("Etat")]
-        public virtual EtatDossierReservation EtatDossierReservation { get; set; }
-
-        public int RaisonsAnnulationDossier { get; set; }
-        [ForeignKey("RaisonAnnulation")]
-        public virtual RaisonAnnulationDossier RaisonAnnulationDossier { get; set; }
 
 
         //public DateTime DateAller { get; set; }
