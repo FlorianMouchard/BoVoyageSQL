@@ -28,7 +28,7 @@ namespace AppliBoVoyage.UI
                 InformationAffichage.Creer<Client>(x=>x.Telephone, "Téléphone", 10),
                 InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
                 InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 10),
-                InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3),
+                InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3)
 
             };
         }
@@ -77,6 +77,19 @@ namespace AppliBoVoyage.UI
         private void RechercherClient()
         {
             ConsoleHelper.AfficherEntete("Rechercher un client");
+            var rechercheClient =
+
+                 ConsoleSaisie.SaisirChaineObligatoire("Nom : ");         
+                
+            
+            using (BaseDonnees context = new BaseDonnees())
+            {
+                var query = context.Clients
+                    .Where(x => x.Nom.Contains(rechercheClient)).ToList();
+                ConsoleHelper.AfficherListe(query, strategieAffichageClients);
+
+            }
+            
 
         }
         private void AjouterClient()

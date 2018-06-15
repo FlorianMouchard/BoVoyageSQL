@@ -16,9 +16,7 @@ namespace AppliBoVoyage.Dal
         {
         }
 
-        public DbSet<AgenceVoyage> AgencesVoyage { get; set; }
-
-        public DbSet<Assurance> Assurances { get; set; }
+        public DbSet<AgenceVoyage> AgencesVoyage { get; set; }        
 
         public DbSet<AssuranceAnnulation> AssurancesAnnulation { get; set; }
 
