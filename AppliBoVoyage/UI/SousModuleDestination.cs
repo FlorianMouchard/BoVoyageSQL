@@ -7,6 +7,7 @@ using BoVoyage.Framework.UI;
 using System.Linq;
 using AppliBoVoyage.Metier;
 using AppliBoVoyage.Dal;
+using BoVoyage.UI;
 
 namespace AppliBoVoyage.UI
 {
@@ -14,6 +15,21 @@ namespace AppliBoVoyage.UI
     {
 
         private Menu menu;
+
+        private static readonly List<InformationAffichage> strategieAffichageDestinations
+    = new List<InformationAffichage>();
+        static SousModuleDestination()
+        {
+            strategieAffichageDestinations = new List<InformationAffichage>
+            {
+            InformationAffichage.Creer<Destination>(x => x.Id, "Dest.", 5),
+            InformationAffichage.Creer<Destination>(x => x.Continent, "Continent :", 15),
+            InformationAffichage.Creer<Destination>(x => x.Pays, "Pays :", 15),
+            InformationAffichage.Creer<Destination>(x => x.Description, "Description :", 20),
+            InformationAffichage.Creer<Destination>(x => x.Region, "Region :", 15),
+
+            };
+        }
 
         private void MenuDestination()
         {
@@ -53,6 +69,9 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Destination");
 
+                var liste = Application.GetBaseDonnees().Destinations.ToList();
+                ConsoleHelper.AfficherListe(liste, strategieAffichageDestinations);
+                       
         }
 
 

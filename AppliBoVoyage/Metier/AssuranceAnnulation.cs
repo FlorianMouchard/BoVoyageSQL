@@ -8,5 +8,7 @@ namespace AppliBoVoyage.Metier
 {
     public class AssuranceAnnulation
     {
+
+        public int Id { get; set; }
     }
 }

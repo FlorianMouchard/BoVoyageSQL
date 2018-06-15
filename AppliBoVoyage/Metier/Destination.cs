@@ -9,14 +9,14 @@ namespace AppliBoVoyage.Metier
 {
     public class Destination
     {
+        public int Id { get; set; }
         public string Continent { get; set; }
         public string Pays { get; set; }
         public string Region { get; set; }
         public string Description { get; set; }
 
-        public int IdVoyage { get; set; }
-        [ForeignKey("IdVoyage")]
-        public virtual Voyage Voyage { get; set; }
 
+        public virtual ICollection<Voyage> Voyages { get; set; }
+        public virtual ICollection<DossierReservation> DossierReservations { get; set; }
     }
 }

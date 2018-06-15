@@ -25,7 +25,7 @@ namespace AppliBoVoyage.UI
                 InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prénom", 20),
                 InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
                 InformationAffichage.Creer<Participant>(x=>x.Telephone, "Téléphone", 10),
-                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date de naissance", 10),
+                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date naissance", 15),
                 InformationAffichage.Creer<Participant>(x=>x.Age, "Age", 3),
                 InformationAffichage.Creer<Participant>(x=>x.Reduction, "Réduction", 10),
 
@@ -83,7 +83,7 @@ namespace AppliBoVoyage.UI
             BaseDonnees context = new BaseDonnees();
             var participant = new Participant
             {
-                Civilité = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
+                Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
                 Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
                 Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
                 Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
@@ -92,9 +92,9 @@ namespace AppliBoVoyage.UI
                 Reduction = ConsoleSaisie.SaisirDecimalObligatoire("Réduction : ")
 
             };
-            participant.Age = DateTime.Now.Year - participant.DateNaissance.Year -
-                         (DateTime.Now.Month < participant.DateNaissance.Month ? 1 :
-                         DateTime.Now.Day < participant.DateNaissance.Day ? 1 : 0);
+            //participant.Age = DateTime.Now.Year - participant.DateNaissance.Year -
+            //             (DateTime.Now.Month < participant.DateNaissance.Month ? 1 :
+            //             DateTime.Now.Day < participant.DateNaissance.Day ? 1 : 0);
             context.Participants.Add(participant);
             context.SaveChanges();
         }

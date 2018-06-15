@@ -27,7 +27,7 @@ namespace AppliBoVoyage.UI
                 InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
                 InformationAffichage.Creer<Client>(x=>x.Telephone, "Téléphone", 10),
                 InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
-                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 10),
+                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date naissance", 15),
                 InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3),
 
             };
@@ -85,7 +85,7 @@ namespace AppliBoVoyage.UI
             BaseDonnees context = new BaseDonnees();
             var client = new Client
             {
-                Civilité = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
+                Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
                 Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
                 Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
                 Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
@@ -94,6 +94,7 @@ namespace AppliBoVoyage.UI
                 DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
 
             };
+
             client.Age = DateTime.Now.Year - client.DateNaissance.Year -
                          (DateTime.Now.Month < client.DateNaissance.Month ? 1 :
                          DateTime.Now.Day < client.DateNaissance.Day ? 1 : 0);
