@@ -20,8 +20,8 @@ namespace AppliBoVoyage.UI
         {
             strategieAffichageAgences = new List<InformationAffichage>
             {
-            InformationAffichage.Creer<AgenceVoyage>(x => x.Id, "Id Agence :", 10),
-            InformationAffichage.Creer<AgenceVoyage>(x => x.Nom, "Raison sociale :", 20),
+            InformationAffichage.Creer<AgenceVoyage>(x => x.Id, "Id Agence", 10),
+            InformationAffichage.Creer<AgenceVoyage>(x => x.Nom, "Raison sociale", 20),
 
             };
         }
@@ -64,7 +64,7 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Les agences");
 
-            var liste = Application.GetBaseDonnees().AgencesVoyage.ToList();
+            var liste = Application.GetBaseDonnees().AgencesVoyage.ToList(); 
             ConsoleHelper.AfficherListe(liste, strategieAffichageAgences);
 
         }
@@ -116,7 +116,7 @@ namespace AppliBoVoyage.UI
                 if (Saisie == 0)
 
                 {
-                    this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Annuler"));
+                    this.menu.AjouterElement(new ElementMenuQuitterMenu("0", "Annuler"));
                 }
 
                 else

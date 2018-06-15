@@ -23,10 +23,10 @@ namespace AppliBoVoyage.UI
             strategieAffichageDestinations = new List<InformationAffichage>
             {
             InformationAffichage.Creer<Destination>(x => x.Id, "Dest.", 5),
-            InformationAffichage.Creer<Destination>(x => x.Continent, "Continent :", 15),
-            InformationAffichage.Creer<Destination>(x => x.Pays, "Pays :", 15),
-            InformationAffichage.Creer<Destination>(x => x.Description, "Description :", 20),
-            InformationAffichage.Creer<Destination>(x => x.Region, "Region :", 15),
+            InformationAffichage.Creer<Destination>(x => x.Continent, "Continent", 15),
+            InformationAffichage.Creer<Destination>(x => x.Pays, "Pays", 15),
+            InformationAffichage.Creer<Destination>(x => x.Description, "Description (moins de 70 caractères)", 70),
+            InformationAffichage.Creer<Destination>(x => x.Region, "Region", 15),
 
             };
         }

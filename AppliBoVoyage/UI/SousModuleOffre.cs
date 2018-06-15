@@ -22,12 +22,12 @@ namespace AppliBoVoyage.UI
         {
             strategieAffichageOffres = new List<InformationAffichage>
             {
-            InformationAffichage.Creer<Voyage>(x => x.Id, "Id Voyage :", 12),
-            InformationAffichage.Creer<Voyage>(x => x.DateAller, "Du :", 12),
-            InformationAffichage.Creer<Voyage>(x => x.DateRetour, "Au :", 15),
+            InformationAffichage.Creer<Voyage>(x => x.Id, "Id Voyage", 12),
+            InformationAffichage.Creer<Voyage>(x => x.DateAller, "Du", 12),
+            InformationAffichage.Creer<Voyage>(x => x.DateRetour, "Au", 15),
             InformationAffichage.Creer<Voyage>(x => x.PlacesDisponibles, "Places", 6),
-            InformationAffichage.Creer<Voyage>(x => x.IdDestination, "Dest. :", 6),
-            InformationAffichage.Creer<Voyage>(x => x.IdAgence, "Proposé par :", 15),
+            InformationAffichage.Creer<Voyage>(x => x.IdDestination, "Dest.", 6),
+            InformationAffichage.Creer<Voyage>(x => x.IdAgence, "Proposé par", 15),
             };
         }
 
@@ -82,8 +82,8 @@ namespace AppliBoVoyage.UI
             {
                 voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date aller: ");
                 voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date retour: ");
-                voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Nombre de place(s) disponible(s): ");
-                voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Prix du voyage tout compris ");
+                voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Nombre de place(s) disponible(s) :");
+                voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Prix du voyage tout compris: ");
             }
             var db = new BaseDonnees();
             db.Voyages.Add(voyage);

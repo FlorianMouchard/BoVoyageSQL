@@ -9,6 +9,7 @@ using BoVoyage.Framework.UI;
 
 namespace AppliBoVoyage.Metier
 {
+    [Table("DossiersReservation")]
     public class DossierReservation
     {
         public int Id { get; set; }
@@ -22,6 +23,16 @@ namespace AppliBoVoyage.Metier
         public int IdVoyage { get; set; }
         [ForeignKey("IdVoyage")]
         public virtual Voyage Voyages { get; set; }
+
+
+        public int EtatDossierResa { get; set; }
+        [ForeignKey("Etat")]
+        public virtual EtatDossierReservation EtatDossierReservation { get; set; }
+
+        public int RaisonsAnnulationDossier { get; set; }
+        [ForeignKey("RaisonAnnulation")]
+        public virtual RaisonAnnulationDossier RaisonAnnulationDossier { get; set; }
+
 
         //public DateTime DateAller { get; set; }
         //[ForeignKey("DateAller")]
