@@ -105,31 +105,30 @@ namespace AppliBoVoyage.UI
                 ConsoleHelper.AfficherListe(query, strategieAffichageAgences);
             }
 
-            Console.WriteLine("Souhaitez-vous supprimer cette agence?");
+            Console.WriteLine("Confirmer ID de l'agence à supprimer:");
             Console.WriteLine();
-            Console.WriteLine("S - Supprimer");
-            Console.WriteLine("P - Annuler");
+            Console.WriteLine("Appuyer sur 0 pour Annuler");
             Console.WriteLine();
-            var Saisie = Console.ReadLine();
+            int Saisie = int.Parse(Console.ReadLine());
 
             using (BaseDonnees context = new BaseDonnees())
             {
-                switch (Saisie)
+                if (Saisie == 0)
+
                 {
-                    case "S":
-                        var agence = context.AgencesVoyage.SingleOrDefault(x => x.Nom == agenceASupprimer);
+                    this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Annuler"));
+                }
+
+                else
+                {
+
+                        var agence = context.AgencesVoyage.SingleOrDefault(x => x.Id == Saisie);
                         if (Saisie != null)
                         {
                             context.AgencesVoyage.Remove(agence);
                             context.SaveChanges();
                          }
-
-                        break;
-
-                    case "P":
-                        this.menu.AjouterElement(new ElementMenuQuitterMenu("P", "Annuler"));
-                break;
-
+                    return;
                 };
             }
         }
