@@ -45,18 +45,18 @@ namespace AppliBoVoyage.UI
 
 
 
-        private void ConsulterResa()
+         private void ConsulterResa()
         {
-            ConsoleHelper.AfficherEntete("Dossier de reservation");
+        //    ConsoleHelper.AfficherEntete("Dossier de reservation");
 
-            Console.WriteLine("Entrer le numéro du Client à afficher: ");
-            int clientAAfficher = int.Parse(Console.ReadLine());
+        //    Console.WriteLine("Entrer le numéro du Client à afficher: ");
+        //    int clientAAfficher = int.Parse(Console.ReadLine());
 
-            using (BaseDonnees context = new BaseDonnees())
-            {
-                var ClientAAfficher = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
-            }
-            Console.WriteLine("Pour modifier l'enregistrement, appuyer sur M...");
+        //    using (BaseDonnees context = new BaseDonnees())
+        //    {
+        //        var ClientAAfficher = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
+        //    }
+        //    Console.WriteLine("Pour modifier l'enregistrement, appuyer sur M...");
         }
 
 
@@ -84,13 +84,13 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer une reservation");
 
-            Console.WriteLine("Entrer le numéro du Client à supprimer: ");
-            int clientASupprimer = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Entrer le numéro du Client à supprimer: ");
+            //int clientASupprimer = int.Parse(Console.ReadLine());
 
-            using (BaseDonnees context = new BaseDonnees())
-            {
-                var ClientASupprimer = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
-            }
+            //using (BaseDonnees context = new BaseDonnees())
+            //{
+            //    var ClientASupprimer = BaseDonnees.DossierResa.where(x => x.IdClient == ClientAAfficher);
+            //}
 
 
 

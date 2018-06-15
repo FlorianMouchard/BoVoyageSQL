@@ -6,14 +6,25 @@ using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
 using AppliBoVoyage.Metier;
 using AppliBoVoyage.Dal;
+using BoVoyage.UI;
 
 namespace AppliBoVoyage.UI
 {
     public class SousModuleAgence
     {
         private Menu menu;
-        private ModuleGestionVoyages moduleGestionVoyages;
 
+        private static readonly List<InformationAffichage> strategieAffichageAgences
+            = new List<InformationAffichage>();
+        static SousModuleAgence()
+        {
+            strategieAffichageAgences = new List<InformationAffichage>
+            {
+            InformationAffichage.Creer<AgenceVoyage>(x => x.Nom, "Raison sociale :", 10),
+            InformationAffichage.Creer<AgenceVoyage>(x => x.Voyages, "Voyage proposé :", 20),
+            InformationAffichage.Creer<AgenceVoyage>(x => x.IdVoyage, "Id Voyage :", 3),
+            };
+        }
 
         private void MenuAgence()
         {
@@ -53,7 +64,7 @@ namespace AppliBoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Les agences");
 
-            var liste = new BaseDonnees().AgencesVoyage.ToList();
+            var liste = Application.GetBaseDonnees().AgencesVoyage.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageAgences);
 
         }
